@@ -1,0 +1,21 @@
+{
+  "status": "collected-texts-not-legal-clearance",
+  "scope": "Installed npm production dependencies; development tooling remains in DEPENDENCY-LICENSE-INVENTORY.json. Excludes uninstalled incompatible optional platforms, project ownership, assets, vendor SDKs and non-npm components",
+  "hostPlatform": "linux",
+  "hostArchitecture": "x86_64",
+  "dependencies": [
+    {
+      "name": "adm-zip",
+      "version": "0.6.1",
+      "declaredLicense": "MIT",
+      "developmentOnly": false,
+      "notices": [
+        {
+          "file": "LICENSE",
+          "sha256": "6bb5b2d4c07d793ca928daa63a8899c6914fafb5ac3aa04ec10cae07f3d57dca",
+          "text": "MIT License\n\nCopyright (c) 2012 Another-D-Mention Software and other contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+        }
+      ]
+    }
+  ]
+}

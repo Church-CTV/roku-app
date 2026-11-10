@@ -57,13 +57,13 @@
     },
     {
       "name": "ansi-styles",
-      "version": "3.2.1",
+      "version": "4.3.0",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "ansi-styles",
-      "version": "4.3.0",
+      "version": "3.2.1",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -105,13 +105,13 @@
     },
     {
       "name": "chalk",
-      "version": "2.4.2",
+      "version": "4.1.2",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "chalk",
-      "version": "4.1.2",
+      "version": "2.4.2",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -147,6 +147,12 @@
     },
     {
       "name": "color-convert",
+      "version": "2.0.1",
+      "declaredLicense": "MIT",
+      "developmentOnly": true
+    },
+    {
+      "name": "color-convert",
       "version": "1.9.3",
       "declaredLicense": "MIT",
       "developmentOnly": true
@@ -158,20 +164,14 @@
       "developmentOnly": true
     },
     {
-      "name": "color-convert",
-      "version": "2.0.1",
+      "name": "color-name",
+      "version": "1.1.4",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "color-name",
       "version": "1.1.3",
-      "declaredLicense": "MIT",
-      "developmentOnly": true
-    },
-    {
-      "name": "color-name",
-      "version": "1.1.4",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -333,13 +333,13 @@
     },
     {
       "name": "has-flag",
-      "version": "3.0.0",
+      "version": "4.0.0",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "has-flag",
-      "version": "4.0.0",
+      "version": "3.0.0",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -638,14 +638,14 @@
       "developmentOnly": true
     },
     {
-      "name": "string-width",
-      "version": "4.2.3",
+      "name": "string_decoder",
+      "version": "1.1.1",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
-      "name": "string_decoder",
-      "version": "1.1.1",
+      "name": "string-width",
+      "version": "4.2.3",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -657,13 +657,13 @@
     },
     {
       "name": "supports-color",
-      "version": "5.5.0",
+      "version": "7.2.0",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "supports-color",
-      "version": "7.2.0",
+      "version": "5.5.0",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -705,13 +705,13 @@
     },
     {
       "name": "vscode-jsonrpc",
-      "version": "8.2.0",
+      "version": "9.0.1",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "vscode-jsonrpc",
-      "version": "9.0.1",
+      "version": "8.2.0",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -723,13 +723,13 @@
     },
     {
       "name": "vscode-languageserver-protocol",
-      "version": "3.17.5",
+      "version": "3.18.2",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "vscode-languageserver-protocol",
-      "version": "3.18.2",
+      "version": "3.17.5",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -741,13 +741,13 @@
     },
     {
       "name": "vscode-languageserver-types",
-      "version": "3.17.5",
+      "version": "3.18.0",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
     {
       "name": "vscode-languageserver-types",
-      "version": "3.18.0",
+      "version": "3.17.5",
       "declaredLicense": "MIT",
       "developmentOnly": true
     },
@@ -793,6 +793,5 @@
       "declaredLicense": "ISC",
       "developmentOnly": true
     }
-  ],
-  "note": "Preserve dependency licenses and required notices. This inventory is not evidence of relicensing authority."
+  ]
 }

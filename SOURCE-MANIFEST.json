@@ -32,7 +32,7 @@
     },
     {
       "path": "DEPENDENCY-LICENSE-INVENTORY.json",
-      "sha256": "c98b07cda262cd13c730a6ba835aad745cf16d836346f9998a699ee36ee32144"
+      "sha256": "7a0d5bb7969c8c47f7df6ee71e07225aa48b46f7d02b78bec8acc1ea181e4b65"
     },
     {
       "path": "LICENSE",
@@ -67,8 +67,12 @@
       "sha256": "9e7ba5bae1b572990160c8f1f9c295d466e83288f209288eb7e18d766757ccf3"
     },
     {
+      "path": "THIRD-PARTY-LICENSES.json",
+      "sha256": "d9ceaebc836f278c0bbf8a93365d6e138e8dacca43453c9b33549bb571bd5ff4"
+    },
+    {
       "path": "THIRD-PARTY-NOTICES.md",
-      "sha256": "de534b624b6b2202e58c60214aad9f06ef0f26455812f7044174d75eaafe931d"
+      "sha256": "dbefaa551ed546c8bed9429ba817f79cfb38037174b6a6d967cfdc0faee3ed9c"
     },
     {
       "path": "brslint.config",
