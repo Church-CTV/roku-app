@@ -7,12 +7,16 @@
   "selfExcluded": true,
   "files": [
     {
+      "path": ".github/CODEOWNERS",
+      "sha256": "2b94d61e51274fcb9ab5e270e62e7b3670fd123a1590020b84bb2b1eccc50d67"
+    },
+    {
       "path": ".github/workflows/ci.yml",
       "sha256": "7fefca6da524e27d77421c012db505fc397a3d0df62c5f9cb75f71623ef3baf4"
     },
     {
       "path": ".github/workflows/source-hygiene.yml",
-      "sha256": "92e9bd0f85a40c242d7398fbf7b43a7d30c5b911c64af1545357907fd086d1be"
+      "sha256": "be040f08cf8a66e7cc19d1465ea0ac587d1290c478018cfa1a7e7531165f67ce"
     },
     {
       "path": ".gitignore",
@@ -52,7 +56,7 @@
     },
     {
       "path": "RELEASE-STATUS.md",
-      "sha256": "29f9a009776e1457bc7eb159495db5390f42bf8416556230dc7cc81800094b3c"
+      "sha256": "5a66192fbee458e95286bdb67d50d0a9d64c112ee16908e92c71a6e12dea24d7"
     },
     {
       "path": "RUNTIME-CONFIGURATION.md",

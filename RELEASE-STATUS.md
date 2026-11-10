@@ -2,6 +2,12 @@
 
 **PRIVATE / NOT APPROVED FOR PUBLICATION**
 
+The sanitized source passed its simulated tests, source-safety checks, compiler,
+package validation and hosted CI. The reduced dependency tree has no npm audit
+findings as measured during preparation. This is not a Roku hardware, playback,
+focus-visual, signing or store-certification result. Ownership, notices, asset
+review and final legal terms remain publication gates.
+
 Publication requires exact-tree security and manual privacy review, classified
 historical findings, code/asset ownership, third-party notices, dependency
 vulnerability triage and appropriate local tests/builds.
