@@ -1,5 +1,7 @@
 # Church CTV — Roku application
 
+Permissions, commercial licensing, sales and support: see [SUPPORT.md](SUPPORT.md).
+
 A SceneGraph channel starter with configurable navigation, feed loading, playback,
 settings, analytics and a QR-code component. This is a sanitized source snapshot,
 not a production-ready distribution. Placeholder artwork is deliberately generic.
