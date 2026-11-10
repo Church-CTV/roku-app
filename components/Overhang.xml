@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Overhang — Roku banner/overhang component for channel branding -->
+<component name="ChannelOverhang" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="Overhang.brs" />
+
+    <interface>
+        <field id="logoUri" type="string" />
+        <field id="showOptions" type="boolean" value="true" />
+        <field id="showClock" type="boolean" value="true" />
+    </interface>
+
+    <children>
+        <Rectangle id="bgRect"
+            width="1920"
+            height="100"
+            color="0x1A1A2E"
+        />
+        <Poster id="logoPoster"
+            translation="[30, 20]"
+            width="60"
+            height="60"
+            loadWidth="120"
+            loadHeight="120"
+            maxWidth="120"
+            maxHeight="120"
+        />
+        <Label id="optionsLabel"
+            translation="[110, 30]"
+            font="font:MediumSystemFont"
+            color="0xFFFFFF"
+            visible="false"
+        />    
+        <Label id="clockLabel"
+            translation="[1000, 30]"
+            font="font:MediumSystemFont"
+            color="0xFFFFFF"
+            horizAlign="right"
+            vertAlign="center"
+            width="180"
+            height="40"
+            visible="false"
+        />
+    </children>
+</component>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="Analytics" extends="Node">
+    <interface>
+        <field id="eventCount" type="integer" />
+        <field id="lastExportTime" type="string" />
+        <field id="screenHistory" type="array" />
+        <field id="playHistory" type="array" />
+        <field id="deepLinkHistory" type="array" />
+        <field id="errorHistory" type="array" />
+        <field id="sessionStartTime" type="string" />
+        <field id="sessionStartEpoch" type="integer" />
+        <field id="activeScreen" type="string" />
+    </interface>
+</component>

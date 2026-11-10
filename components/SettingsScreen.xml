@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SettingsScreen" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/Analytics.brs" />
+    <script type="text/brightscript" uri="../source/ConfigLoader.bs" />
+    <script type="text/brightscript" uri="SettingsScreen.brs" />
+
+    <interface>
+        <field id="channelName" type="string" onChange="OnChannelNameChanged" />
+        <field id="channelVersion" type="string" onChange="OnChannelVersionChanged" />
+        <field id="contentSourceUrl" type="string" onChange="OnContentSourceChanged" />
+        <field id="currentLayout" type="string" onChange="OnCurrentLayoutChanged" />
+        <field id="featureSearch" type="boolean" onChange="OnFeatureSearchChanged" />
+        <field id="featureDeepLinking" type="boolean" onChange="OnFeatureDeepLinkingChanged" />
+        <field id="featureAnalytics" type="boolean" onChange="OnFeatureAnalyticsChanged" />
+        <field id="featureCrashReporting" type="boolean" onChange="OnFeatureCrashReportingChanged" />
+        <field id="iconFocusUri" type="uri" />
+        <field id="play" type="boolean" value="false" alwaysNotify="true" />
+        <field id="selectedContent" type="node" />
+        <field id="close" type="boolean" value="false" alwaysNotify="true" />
+        <field id="layoutToggle" type="string" alwaysNotify="true" />
+        <field id="givingDonationUrl" type="string" onChange="OnGivingDonationUrlChanged" />
+    </interface>
+
+    <children>
+    <group id="settingsGroup" translation ="[-70,100]">
+        <Label id="settingsTitle" text="Settings" font="font:ExtraBoldSystemFont"
+               color="0xE8B931" horizAlign="left" translation="[300, 60]" />
+
+        <Label id="channelNameLabel" text="" font="font:MediumSystemFont"
+               color="0xFFFFFF" horizAlign="left" translation="[300, 150]" width="750" />
+
+        <Label id="channelVersionLabel" text="" font="font:SmallSystemFont"
+               color="0xA0A0B0" horizAlign="left" translation="[300, 195]" width="750" />
+
+        <Label id="contentSourceLabel" text="" font="font:SmallSystemFont"
+               color="0xA0A0B0" horizAlign="left" translation="[300, 237]" width="750" />
+
+        <Label id="sectionLayout" text="Layout" font="font:SmallBoldSystemFont"
+               color="0xA0A0B0" horizAlign="left" translation="[300, 290]" />
+
+        <Group id="layoutToggleRow" translation="[300, 330]"  focusable="true">
+            <Label id="layoutToggleName" text="Layout" font="font:MediumSystemFont"
+                   color="0xFFFFFF" horizAlign="left" translation="[0, 15]" width="400" />
+            <Label id="layoutToggleValue" text="" font="font:MediumBoldSystemFont"
+                   color="0xE8B931" horizAlign="right" translation="[770, 15]" width="770" />
+        </Group>
+
+        <Label id="sectionFeatures" text="Features" font="font:SmallBoldSystemFont"
+               color="0xA0A0B0" horizAlign="left" translation="[300, 410]" />
+
+        <Group id="featureSearchRow" translation="[300, 450]"  focusable="true">
+            <Label id="featureSearchName" text="Search" font="font:MediumSystemFont"
+                   color="0xFFFFFF" horizAlign="left" translation="[0, 15]" width="400" />
+            <Label id="featureSearchValue" text="" font="font:MediumBoldSystemFont"
+                   color="0xA0A0B0" horizAlign="right" translation="[770, 15]" width="770" />
+        </Group>
+
+        <Group id="featureDeepLinkingRow" translation="[300, 500]"  focusable="true">
+            <Label id="featureDeepLinkingName" text="Deep Linking" font="font:MediumSystemFont"
+                   color="0xFFFFFF" horizAlign="left" translation="[0, 15]" width="400" />
+            <Label id="featureDeepLinkingValue" text="" font="font:MediumBoldSystemFont"
+                   color="0xA0A0B0" horizAlign="right" translation="[770, 15]" width="770" />
+        </Group>
+
+        <Group id="featureAnalyticsRow" translation="[300, 550]"  focusable="true">
+            <Label id="featureAnalyticsName" text="Analytics" font="font:MediumSystemFont"
+                   color="0xFFFFFF" horizAlign="left" translation="[0, 15]" width="400" />
+            <Label id="featureAnalyticsValue" text="" font="font:MediumBoldSystemFont"
+                   color="0xA0A0B0" horizAlign="right" translation="[770, 15]" width="770" />
+        </Group>
+
+        <Group id="featureCrashReportingRow" translation="[300, 600]"  focusable="true">
+            <Label id="featureCrashReportingName" text="Crash Reporting" font="font:MediumSystemFont"
+                   color="0xFFFFFF" horizAlign="left" translation="[0, 15]" width="400" />
+            <Label id="featureCrashReportingValue" text="" font="font:MediumBoldSystemFont"
+                   color="0xA0A0B0" horizAlign="right" translation="[770, 15]" width="770" />
+        </Group>
+
+        <Label id="sectionQrCode" text="Give" font="font:SmallBoldSystemFont"
+               color="0xA0A0B0" horizAlign="center" translation="[300, 680]" />
+
+        <QRCode id="channelQrCode" translation="[300, 720]"
+                width="250" height="250"
+                text="" />
+
+        <Label id="qrFallbackUrl" text="" font="font:SmallSystemFont"
+               color="0xFFFFFF" horizAlign="left" translation="[390, 680]" width="1000" wrap="true" numLines="2" />
+       </group>
+    </children>
+</component>

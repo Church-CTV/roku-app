@@ -1,0 +1,90 @@
+{
+  "version": "1.0.0",
+  "channel": {
+    "name": "Test Channel",
+    "description": "Test channel for unit tests",
+    "language": "en",
+    "copyright": "Test 2024"
+  },
+  "branding": {
+    "colors": {
+      "background": "0x1A1A2E",
+      "surface": "0x16213E",
+      "accent": "0xE8B931",
+      "textPrimary": "0xFFFFFF",
+      "textSecondary": "0xA0A0B0",
+      "focus": "0xE8B931",
+      "error": "0xFF4444"
+    },
+    "images": {
+      "overhangLogo": "pkg:/images/logo.png",
+      "backgroundImage": "pkg:/images/bg.png",
+      "iconFocus": "pkg:/images/focus.png"
+    },
+    "fonts": {
+      "title": "font:BoldSystemFont",
+      "body": "font:MediumSystemFont",
+      "caption": "font:SmallSystemFont",
+      "heading": "font:ExtraBoldSystemFont"
+    },
+    "spacing": {
+      "marginHorizontal": 80,
+      "marginVertical": 40
+    },
+    "animation": {
+      "cardScale": 1.05,
+      "transitionDuration": 0.25
+    }
+  },
+  "content": {
+    "sourceUrl": "https://example.com/feed",
+    "userAgent": "Roku/Test",
+    "maxRows": 6,
+    "maxItemsPerRow": 12,
+    "retryAttempts": 3,
+    "retryDelayMs": 2000,
+    "sslCertificates": "common:/certs/ca-bundle.crt"
+  },
+  "features": {
+    "search": true,
+    "deepLinking": true,
+    "analytics": true,
+    "crashReporting": true,
+    "overhangLogo": true,
+    "overhangClock": false,
+    "overhangOptions": false
+  },
+  "ui": {
+    "backgroundColor": "0x1A1A2E",
+    "welcome": {
+      "enabled": true,
+      "title": "Loading...",
+      "subtitle": "Please wait"
+    },
+    "error": {
+      "title": "Connection Error",
+      "message": "Unable to load content.",
+      "retryLabel": "Retry"
+    },
+    "loading": {
+      "message": "Loading..."
+    }
+  },
+  "analytics": {
+    "enabled": true,
+    "exportUrl": "",
+    "exportIntervalSeconds": 300,
+    "maxEventsPerBatch": 50,
+    "flushOnError": true
+  },
+  "cardStyle": {
+    "showTitle": true,
+    "showDescription": true,
+    "titleFont": "font:SmallBoldSystemFont",
+    "descriptionFont": "font:SmallSystemFont",
+    "titleColor": "0xFFFFFF",
+    "descriptionColor": "0xA0A0B0",
+    "titleNumLines": 1,
+    "descriptionNumLines": 1
+  }
+}

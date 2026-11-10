@@ -1,0 +1,64 @@
+{
+  "rows": [
+    {
+      "id": "row-june-2024",
+      "title": "June 2024 Sermons",
+      "items": [
+        {
+          "id": "sermon-001",
+          "title": "Faith in Action",
+          "description": "A sermon about living out our faith in daily life.",
+          "thumbnail": "https://example.com/thumbs/sermon-001.jpg",
+          "content": {
+            "videos": [
+              {
+                "url": "https://example.com/videos/sermon-001.mp4",
+                "quality": "hd"
+              }
+            ],
+            "duration": 2700
+          },
+          "category": "faith"
+        },
+        {
+          "id": "sermon-002",
+          "title": "The Power of Prayer",
+          "description": "Understanding prayer and its importance.",
+          "thumbnail": "https://example.com/thumbs/sermon-002.jpg",
+          "content": {
+            "videos": [
+              {
+                "url": "https://example.com/videos/sermon-002.mp4",
+                "quality": "hd"
+              }
+            ],
+            "duration": 3200
+          },
+          "category": "prayer"
+        }
+      ]
+    },
+    {
+      "id": "row-may-2024",
+      "title": "May 2024 Sermons",
+      "items": [
+        {
+          "id": "sermon-003",
+          "title": "Walking in Grace",
+          "description": "Embracing God's grace in our lives.",
+          "thumbnail": "https://example.com/thumbs/sermon-003.jpg",
+          "content": {
+            "videos": [
+              {
+                "url": "https://example.com/videos/sermon-003.mp4",
+                "quality": "hd"
+              }
+            ],
+            "duration": 2400
+          },
+          "category": "grace"
+        }
+      ]
+    }
+  ]
+}

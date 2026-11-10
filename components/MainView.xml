@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MainView — Detail panel with poster, metadata, and action buttons -->
+<component name="MainView" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="MainView.brs" />
+
+    <interface>
+        <field id="itemContent" type="node" onChange="OnContentSet" />
+        <field id="close" type="boolean" value="false" alwaysNotify="true" />
+        <field id="play" type="boolean" value="false" alwaysNotify="true" />
+        <field id="moreInfo" type="boolean" value="false" alwaysNotify="true" />
+    </interface>
+
+    <children>
+        <!-- Dark overlay background -->
+        <Rectangle id="overlay"
+            width="1920"
+            height="1080"
+            color="0x1A1A2E"
+            opacity="0.9"
+        />
+
+        <!-- Close button -->
+        <Button
+            id="closeButton"
+            text="&#x2715;"
+            color="0x16213E"
+            focusedColor="0xE8B931"
+            focusBitmapUri="pkg:/images/icon_focus_hd.png"
+            translation="[1780,20]"
+            minWidth="60"
+            maxWidth="60"
+            height="60"
+            textColor="0xFFFFFF"
+        />
+
+        <!-- Content container -->
+        <Group id="contentContainer"
+            translation="[460, 100]"
+        >
+            <!-- Large poster image -->
+            <Poster
+                id="detailPoster"
+                loadDisplayMode="scaleToFit"
+                width="480"
+                height="270"
+                loadWidth="480"
+                loadHeight="270"
+            />
+
+            <!-- Title -->
+            <Label
+                id="detailTitle"
+                width="900"
+                height="60"
+                font="font:ExtraBoldSystemFont"
+                color="0xFFFFFF"
+                horizAlign="left"
+                translation="[20, 290]"
+                text=""
+            />
+
+            <!-- Description -->
+            <Label
+                id="detailDesc"
+                width="900"
+                height="120"
+                font="font:MediumSystemFont"
+                color="0xA0A0B0"
+                horizAlign="left"
+                translation="[20, 360]"
+                wrap="true"
+                numLines="4"
+                text=""
+            />
+
+            <!-- Metadata -->
+            <Label
+                id="detailMeta"
+                width="900"
+                height="30"
+                font="font:SmallSystemFont"
+                color="0xE8B931"
+                horizAlign="left"
+                translation="[20, 500]"
+                text=""
+            />
+
+            <!-- Action buttons -->
+            <Group id="buttonGroup"
+                translation="[20, 550]"
+            >
+                <Button
+                    id="playButton"
+                    text="&#x25B6;  Play"
+                    color="0xE8B931"
+                    focusedColor="0xFFFFFF"
+                    focusBitmapUri="pkg:/images/icon_focus_hd.png"
+                    minWidth="200"
+                    maxWidth="200"
+                    height="60"
+                    textColor="0x1A1A2E"
+                />
+                <Button
+                    id="moreInfoButton"
+                    text="&#x2139;  More Info"
+                    color="0x16213E"
+                    focusedColor="0xE8B931"
+                    focusBitmapUri="pkg:/images/icon_focus_hd.png"
+                    translation="[220, 0]"
+                    minWidth="200"
+                    maxWidth="200"
+                    height="60"
+                    textColor="0xFFFFFF"
+                />
+            </Group>
+        </Group>
+    </children>
+</component>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- MainLoaderTask — Async content loader for Roku channel template -->
+
+<component name="MainLoaderTask" extends="Task">
+    <interface>
+        <field id="content" type="node" />
+        <field id="cardStyle" type="assocarray" />
+        <field id="serverConfig" type="assocarray" />
+        <field id="contentConfig" type="assocarray" />
+        <field id="analyticsConfig" type="assocarray" />
+        <field id="featureFlags" type="assocarray" />
+        <field id="givingConfig" type="assocarray" />
+        <field id="error" type="string" />
+    </interface>
+
+    <script type="text/brightscript" uri="../../source/App.brs" />
+    <script type="text/brightscript" uri="../../source/ConfigLoader.bs" />
+
+    <script type="text/brightscript" uri="MainLoaderTask.brs" />
+</component>

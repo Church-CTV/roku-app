@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="StateExporterTask" extends="Task">
+    <interface>
+        <field id="state" type="assocarray" />
+        <function name="ExportNow" />
+    </interface>
+    <script uri="StateExporterTask.brs" />
+</component>

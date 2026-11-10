@@ -1,0 +1,12 @@
+node_modules/
+build/
+.roku-staging/
+test-results/
+.env
+.env.*
+!.env.example
+*.pkg
+*.zip
+*.key
+*.pem
+config/local*.json

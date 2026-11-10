@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BrandTheme — Centralized design system for Example Channel Roku channel -->
+<component name="BrandTheme" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="BrandTheme.brs" />
+
+    <interface>
+        <field id="bgColor" type="color" value="0x1A1A2E" onChange="OnThemeChanged" />
+        <field id="surfaceColor" type="color" value="0x16213E" onChange="OnThemeChanged" />
+        <field id="accentColor" type="color" value="0xE8B931" onChange="OnThemeChanged" />
+        <field id="textPrimary" type="color" value="0xFFFFFF" onChange="OnThemeChanged" />
+        <field id="textSecondary" type="color" value="0xA0A0B0" onChange="OnThemeChanged" />
+        <field id="focusColor" type="color" value="0xE8B931" onChange="OnThemeChanged" />
+        <field id="errorColor" type="color" value="0xFF4444" onChange="OnThemeChanged" />
+        <field id="marginH" type="integer" value="80" onChange="OnThemeChanged" />
+        <field id="marginV" type="integer" value="40" onChange="OnThemeChanged" />
+        <field id="cardScale" type="float" value="1.05" onChange="OnThemeChanged" />
+        <field id="transitionDuration" type="float" value="0.25" onChange="OnThemeChanged" />
+    </interface>
+
+    <children>
+        <!-- Background rectangle for scenes -->
+        <Rectangle id="bgRect"
+            width="1920"
+            height="1080"
+            color="0x1A1A2E"
+        />
+    </children>
+</component>

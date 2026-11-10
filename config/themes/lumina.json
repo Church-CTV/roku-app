@@ -1,0 +1,29 @@
+{
+  "theme": {
+    "name": "Lumina",
+    "description": "Warm white and deep blue palette maximizing readability and accessibility. Ideal for audiences that prioritize clarity and content consumption.",
+    "designLenses": {
+      "nielsensHeuristics": "Maximum readability through high contrast text and clear visual hierarchy — matches the 'match between system and real world' heuristic",
+      "wcagPour": "All color combinations meet WCAG AAA contrast ratios (7:1+ for body text, 4.5:1+ for large text) — Perceivable, Operable, Understandable, Robust"
+    }
+  },
+  "branding": {
+    "colors": {
+      "background": "0xFAF8F5",
+      "surface": "0xFFFFFF",
+      "accent": "0x1E40AF",
+      "textPrimary": "0x1A1A2E",
+      "textSecondary": "0x6B7280",
+      "focus": "0x1D4ED8",
+      "error": "0xDC2626"
+    },
+    "spacing": {
+      "marginHorizontal": 80,
+      "marginVertical": 40
+    },
+    "animation": {
+      "cardScale": 1.03,
+      "transitionDuration": 0.25
+    }
+  }
+}

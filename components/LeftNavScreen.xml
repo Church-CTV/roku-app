@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- LeftNavScreen.xml - Left Navigation Layout with fixed-width sidebar (Home + Search + Settings) -->
+<component name="LeftNavScreen" extends="Group" initialState="main">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/Analytics.brs" />
+    <script type="text/brightscript" uri="../source/ConfigLoader.bs" />
+    <script type="text/brightscript" uri="../source/FocusTracker.brs" />
+    <script type="text/brightscript" uri="../source/Preferences.brs" />
+    <script type="text/brightscript" uri="LeftNavScreen.brs" />
+    <children>
+        <!-- Left Sidebar Background -->
+        <Rectangle id="sidebarBackground" color="0x000000" width="80" height="1080" />
+
+        <!-- Sidebar Title -->
+        <Label id="sidebarTitle" text="Navigation" font="font:BoldLarge" color="0xFFFFFF"
+               width="180" height="60" vertAlign="top" horizAlign="left"
+               translation="[10, 10]" />
+
+        <!-- Navigation Items Container -->
+        <Group id="navItems" translation="[10, 258]">
+            <!-- Home Item -->
+            <Group id="navHome" translation="[0, 180]" focusable="true">
+                <Poster id="navHomeBg" uri="pkg:/images/nav_bg.png" width="60" height="60" opacity="0.3" />
+                <Poster id="navHomeIcon" uri="pkg:/images/home.png" width="40" height="40" translation="[10, 10]" />
+                <Label id="navHomeText" text="Home" font="font:Medium" color="0xFFFFFF"
+                       width="160" height="50" vertAlign="center" horizAlign="left"
+                       translation="[50, 0]" />
+            </Group>
+
+            <!-- Search Item -->
+            <Group id="navSearch" translation="[0, 230]" focusable="true">
+                <Poster id="navSearchBg" uri="pkg:/images/nav_bg.png" width="60" height="60" opacity="0" />
+                <Poster id="navSearchIcon" uri="pkg:/images/search.png" width="40" height="40" translation="[10, 10]" />
+                <Label id="navSearchText" text="Search" font="font:Medium" color="0xFFFFFF"
+                       width="160" height="50" vertAlign="center" horizAlign="left"
+                       translation="[50, 0]" />
+            </Group>
+
+            <!-- Settings Item -->
+            <Group id="navSettings" translation="[0, 280]" focusable="true">
+                <Poster id="navSettingsBg" uri="pkg:/images/nav_bg.png" width="60" height="60" opacity="0" />
+                <Poster id="navSettingsIcon" uri="pkg:/images/settings.png" width="40" height="40" translation="[10, 10]" />
+                <Label id="navSettingsText" text="Settings" font="font:Medium" color="0xFFFFFF"
+                       width="160" height="50" vertAlign="center" horizAlign="left"
+                       translation="[50, 0]" />
+            </Group>
+        </Group>
+
+        <!-- Right Content Area -->
+        <Group id="contentPanel" translation="[0, 0]" />
+    </children>
+    
+    <interface>
+         <field id="content" type="node" onChange="OnContentSet" />
+         <field id="selectedNavItem" type="string" onChange="OnNavItemChanged" />
+         <field id="channelName" type="string" />
+         <field id="channelVersion" type="string" />
+         <field id="contentSourceUrl" type="string" />
+         <field id="streamUrl" type="string" />
+         <field id="liveStreamThumbnail" type="string" />
+         <field id="currentLayout" type="string" />
+         <field id="featureSearch" type="boolean" />
+         <field id="featureDeepLinking" type="boolean" />
+         <field id="featureAnalytics" type="boolean" />
+         <field id="featureCrashReporting" type="boolean" />
+         <field id="iconFocusUri" type="uri" />
+         <field id="givingDonationUrl" type="string" />
+         <field id="play" type="boolean" value="false" alwaysNotify="true" />
+         <field id="selectedContent" type="node" alwaysNotify="true" />
+         <field id="close" type="boolean" value="false" alwaysNotify="true" />
+         <field id="layoutToggle" type="string" alwaysNotify="true" />
+         <field id="searchPanel" type="node" />
+         <field id="searchResultsRowList" type="node" />
+         <field id="lastFocusedRowIndex" type="integer" />
+         <field id="lastFocusedItemIndex" type="integer" />
+         <function name="GetFocusedRowItem" type="array" />
+         <function name="GetSearchFocusedItem" type="array" />
+         <function name="FocusOnNav" />
+     </interface>
+    </component>

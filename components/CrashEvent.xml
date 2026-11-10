@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CrashEvent" extends="Node">
+    <interface>
+        <field id="type" type="string" />
+        <field id="message" type="string" />
+        <field id="stackTrace" type="string" />
+        <field id="timestamp" type="string" />
+        <field id="appVersion" type="string" />
+        <field id="sessionDuration" type="integer" />
+        <field id="activeScreen" type="string" />
+        <field id="contextData" type="node" />
+    </interface>
+</component>

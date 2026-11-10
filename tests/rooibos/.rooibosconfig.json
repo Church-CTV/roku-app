@@ -1,0 +1,9 @@
+{
+  "testDir": "tests/rooibos",
+  "include": ["**/*.bs", "**/*.brs"],
+  "exclude": ["node_modules/**"],
+  "reporters": ["spec", "junit"],
+  "outputDir": "test-results",
+  "timeout": 5000,
+  "verbose": true
+}

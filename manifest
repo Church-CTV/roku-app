@@ -1,0 +1,40 @@
+# Copyright (c) 2020 Roku, Inc. All rights reserved.
+
+# Channel Details
+title=Example Channel
+major_version=2
+minor_version=0
+build_version=08362026
+logo_url=pkg:/images/1.png
+background_color=#16213E
+icon_overlay_url=pkg:/images/icon_overlay.png
+content_descriptor=Religious & Educational
+is_podcast=false
+is_live_event=true
+is_free_ad_supported=false
+is_vod=false
+screen_sizes=fhd,hd,4k
+
+# Channel Assets
+mm_icon_focus_hd=pkg:/images/1.png
+
+# Splash Screen
+splash_screen_hd=pkg:/images/2.png
+
+ui_resolutions=fhd
+
+supports_input_launch=1
+enable_deeplinking=true
+
+# Content Feed Configuration (override these for staging/prod environments)
+content_feed_url=https://example.invalid/feed
+content_fetch_timeout=30
+
+# Debug mode (set to 1 for debug, 0 for production)
+debug=0
+
+
+content_id=dominus-channel-001
+use_lsm=1
+min_roku_version=11.0
+rsg_version=1.3

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ FocusState.xml - Focus state interface for SceneGraph components
+ Implements Roku SceneGraph focus management guidelines
+-->
+<component name="FocusState" extends="Node">
+    <!-- Focus state fields -->
+    <interface>
+    <field id="hasFocus" type="boolean" value="false" notify="true"/>
+    <field id="focusable" type="boolean" value="true"/>
+    <field id="focusArea" type="string" value="" notify="true"/>
+    
+    <!-- Focus chain position -->
+    <field id="focusOrder" type="integer" value="0"/>
+    <field id="focusParent" type="string" value=""/>
+    
+    <!-- Navigation state -->
+    <field id="navContext" type="string" value="" notify="true"/>
+    <field id="isAtEdge" type="boolean" value="false" notify="true"/>
+    <field id="edgePosition" type="integer" value="0" notify="true"/>
+    
+    <!-- Focus events -->
+    <field id="onFocusGain" type="integer" value="0"/>
+    <field id="onFocusLoss" type="integer" value="0"/>
+    <field id="onFocusNavigate" type="integer" value="0"/>
+    
+    <!-- Focus management -->
+    <field id="requestFocus" type="boolean" value="false"/>
+    <field id="preventFocus" type="boolean" value="false"/>
+    <field id="autoFocus" type="boolean" value="true"/>
+    
+    <!-- Focus chain control -->
+    <field id="stopPropagation" type="boolean" value="false"/>
+    </interface>
+</component>

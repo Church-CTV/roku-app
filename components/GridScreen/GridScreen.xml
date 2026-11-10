@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- GridScreen — RowList-based content browsing with ContentCard component.
+     Includes an exit confirmation dialog (shown on back from (0, 0)). -->
+<component name="GridScreen" extends="Group" initialFocus="rowList">
+    <script type="text/brightscript" uri="../../source/App.brs" />
+    <script type="text/brightscript" uri="../UILogic/RowListFocusHandler.brs" />
+    <script type="text/brightscript" uri="GridScreen.brs" />
+
+    <interface>
+        <field id="content" type="node" alias="rowList.content" />
+        <field id="rowItemSelected" type="intarray" alwaysnotify="true" alias="rowList.rowItemSelected" />
+        <field id="jumpToRowItem" type="intarray" alias="rowList.jumpToRowItem" />
+        <field id="play" type="boolean" value="false" alwaysNotify="true" />
+        <field id="selectedContent" type="node" />
+        <field id="close" type="boolean" value="false" alwaysNotify="true" />
+
+        <!-- Card style config (mirrored from ConfigManager via global node) -->
+        <field id="cardShowTitle" type="boolean" value="true" />
+        <field id="cardShowDescription" type="boolean" value="true" />
+        <field id="cardTitleFont" type="string" value="font:SmallBoldSystemFont" />
+        <field id="cardDescriptionFont" type="string" value="font:SmallSystemFont" />
+        <field id="cardTitleColor" type="color" value="0xFFFFFF" />
+        <field id="cardDescriptionColor" type="color" value="0xA0A0B0" />
+        <field id="cardTitleNumLines" type="integer" value="1" />
+        <field id="cardDescriptionNumLines" type="integer" value="1" />
+        <field id="cardStyleChanged" type="boolean" value="false" alwaysNotify="true" />
+    </interface>
+    <children>
+        <!-- Label with title and length of content -->
+        <Label
+            id="titleLabel"
+            width="1530"
+            translation="[510,105]"
+            font="font:SmallBoldSystemFont"
+            color="0xFFFFFF"
+        />
+        <!-- Label with description of content -->
+        <Label
+            id="descriptionLabel"
+            wrap="true"
+            width="1530"
+            numLines="3"
+            translation="[510,180]"
+            font="font:SmallSystemFont"
+            color="0xA0A0B0"
+        />
+<RowList
+            itemComponentName="ContentCard"
+            id="rowList"
+            translation="[150,300]"
+            numRows="2"
+            rowitemSize="[[480,270]]"
+            rowItemSpacing="[[30,0]]"
+            itemSize="[1650,405]"
+            rowLabelOffset="[[75,30]]"
+            focusXOffset="[75]"
+            showRowLabel="[true]"
+            rowFocusAnimationStyle="floatingfocus"
+        />
+             8px rounded corners, swap dialogBox / exitButtonBg for
+             Poster nodes backed by a 9-patch PNG. -->
+        <Group id="exitDialog" visible="false">
+            <!-- Semi-transparent backdrop covering the entire screen -->
+            <Rectangle
+                id="dialogBackdrop"
+                width="1920"
+                height="1080"
+                color="0x000000"
+                opacity="0.8"
+            />
+            <!-- Dialog box, centered on the FHD screen -->
+            <Rectangle
+                id="dialogBox"
+                width="600"
+                height="400"
+                color="0x1A1A2E"
+                translation="[660, 340]"
+            />
+            <!-- Dialog title -->
+            <Label
+                id="dialogTitle"
+                text="Exit Application?"
+                width="500"
+                height="50"
+                translation="[710, 420]"
+                font="font:LargeBoldSystemFont"
+                color="0xFFFFFF"
+                horizAlign="center"
+                vertAlign="center"
+            />
+            <!-- Dialog message -->
+            <Label
+                id="dialogMessage"
+                text="Are you sure you want to exit?"
+                width="500"
+                height="80"
+                translation="[710, 515]"
+                font="font:MediumSystemFont"
+                color="0xA0A0B0"
+                horizAlign="center"
+                vertAlign="top"
+                wrap="true"
+            />
+           <!-- Exit button background + focus halo. The "Exit" text label
+                   is a sibling below (not a child of this Group) because Roku
+                   clips/hides labels that are children of focusable Groups
+                   in some cases. Keeping the label outside guarantees it
+                   renders on top of the white rectangle. -->
+            <ExitButton
+                id="exitButton"
+                translation="[860, 575]"
+            />
+            <!-- Black "Exit" label, positioned to overlay the white button. -->
+            <Label
+                id="exitButtonText"
+                text="Exit"
+                translation="[860, 575]"
+                width="200"
+                height="60"
+                font="font:MediumBoldSystemFont"
+                color="0x000000"
+                horizAlign="center"
+                vertAlign="center"
+            />
+        </Group>
+    </children>
+</component>

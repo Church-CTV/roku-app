@@ -1,0 +1,16 @@
+{
+  "stagingFolderPath": "./.roku-staging",
+  "createPackage": false,
+  "copyToStaging": true,
+  "sourceMap": false,
+  "allowBrighterscriptInBrightScript": true,
+  "suppressDefaultBrsDiagnostics": false,
+  "skipFilePrefixes": [],
+  "files": [
+    "manifest",
+    "source/**/*",
+    "components/**/*",
+    "images/**/*",
+    "config/**/*"
+  ]
+}

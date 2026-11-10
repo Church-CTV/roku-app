@@ -1,0 +1,29 @@
+{
+  "theme": {
+    "name": "Renew",
+    "description": "Deep navy and electric cyan palette conveying modern renewal and clarity. Ideal for revitalizing existing channels with a fresh, contemporary feel.",
+    "designLenses": {
+      "hicksLaw": "Single focal point — bright cyan accent draws attention to primary actions, reducing decision complexity",
+      "dohertyThreshold": "Snappy transitions (0.2s) ensure perceived responsiveness under the 500ms threshold"
+    }
+  },
+  "branding": {
+    "colors": {
+      "background": "0x0A1628",
+      "surface": "0x132038",
+      "accent": "0x00D4AA",
+      "textPrimary": "0xF8FAFC",
+      "textSecondary": "0xA8B8C8",
+      "focus": "0x00D4AA",
+      "error": "0xFF5C5C"
+    },
+    "spacing": {
+      "marginHorizontal": 80,
+      "marginVertical": 40
+    },
+    "animation": {
+      "cardScale": 1.04,
+      "transitionDuration": 0.2
+    }
+  }
+}

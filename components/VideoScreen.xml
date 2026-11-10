@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component name="VideoScreen" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/Preferences.brs" />
+    <script type="text/brightscript" uri="../source/ContinueWatching.brs" />
+    <script type="text/brightscript" uri="VideoScreen.brs" />
+    
+    <interface>
+        <field id="content" type="node" onChange="onContentChange" />
+        <field id="visible" type="boolean" onChange="onVisibilityChange" />
+        <field id="close" type="boolean" alwaysNotify="true" />
+    </interface>
+
+    <children>
+        <Video
+            id="videoPlayer"
+            translation="[0,0]"
+        />
+
+    </children>
+</component>

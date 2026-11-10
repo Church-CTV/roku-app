@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "channel": {
+    "description": "Missing name field"
+  },
+  "branding": {
+    "colors": {}
+  },
+  "content": {
+    "maxRows": 0
+  },
+  "features": {}
+}

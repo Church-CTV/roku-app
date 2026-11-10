@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ContentCard — Focusable card component with gold highlight and scale animation -->
+<component name="ContentCard" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/Preferences.brs" />
+    <script type="text/brightscript" uri="ContentCard.brs" />
+
+    <interface>
+        <field id="itemContent" type="node" onChange="OnContentSet" />
+        <field id="focused" type="boolean" value="false" onChange="OnFocusChanged" />
+        <field id="select" type="boolean" value="false" alwaysNotify="true" />
+
+        <!-- Card style config (from parent GridScreen) -->
+        <field id="cardShowTitle" type="boolean" value="true" />
+        <field id="cardShowDescription" type="boolean" value="true" />
+        <field id="cardTitleFont" type="string" value="font:SmallBoldSystemFont" />
+        <field id="cardDescriptionFont" type="string" value="font:SmallSystemFont" />
+        <field id="cardTitleColor" type="color" value="0xFFFFFF" />
+        <field id="cardDescriptionColor" type="color" value="0xA0A0B0" />
+        <field id="cardTitleNumLines" type="integer" value="1" />
+        <field id="cardDescriptionNumLines" type="integer" value="1" />
+    </interface>
+
+    <children>
+        <!-- MaskGroup with 8px rounded corner mask for the poster and focus overlay.
+             MaskGroup clips all children to the rounded rect shape.
+             On non-OGL devices this degrades gracefully (children render without masking). -->
+        <MaskGroup id="posterMask"
+            maskUri="pkg:/images/card_mask.png"
+            maskSize="[480,270]"
+            maskOffset="[0,0]"
+        >
+            <!-- Poster image -->
+            <Poster
+                id="poster"
+                loadDisplayMode="scaleToFit"
+                width="480"
+                height="270"
+                loadWidth="480"
+                loadHeight="270"
+            />
+
+            <!-- Focus ring — clipped to rounded corners by MaskGroup -->
+            <Rectangle id="focusRing"
+                width="480"
+                height="270"
+                color="0xFFFFFF"
+                opacity="0"
+                visible="false"
+            />
+        </MaskGroup>
+
+        <!-- Title overlay at bottom -->
+        <Label id="titleLabel"
+            width="450"
+            height="54"
+            font="font:SmallBoldSystemFont"
+            color="0xFFFFFF"
+            horizAlign="left"
+            translation="[15,216]"
+            text=""
+            visible="false"
+        />
+
+        <!-- Description overlay at bottom -->
+        <Label id="descLabel"
+            width="330"
+            height="135"
+            font="font:SmallSystemFont"
+            color="0xA0A0B0"
+            horizAlign="left"
+            translation="[0,150]"
+            wrap="true"
+            numLines="3"
+            text=""
+            visible="false"
+        />
+    </children>
+</component>

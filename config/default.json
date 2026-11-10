@@ -1,0 +1,150 @@
+{
+  "version": "1.0.0",
+  "channel": {
+    "name": "Example Channel",
+    "description": "A Roku channel template",
+    "language": "en",
+    "copyright": "Copyright 2026"
+  },
+  "branding": {
+    "colors": {
+      "background": "0x1A1A2E",
+      "surface": "0x16213E",
+      "accent": "0xE8B931",
+      "textPrimary": "0xFFFFFF",
+      "textSecondary": "0xA0A0B0",
+      "focus": "0xE8B931",
+      "navFocusBg": "0xE8B931",
+      "error": "0xFF4444",
+      "live": "0xFF0000",
+      "success": "0x4CAF50"
+    },
+    "images": {
+      "overhangLogo": "pkg:/images/hd_overhang_logo.png",
+      "backgroundImage": "pkg:/images/background.png",
+      "iconFocus": "pkg:/images/icon_focus_hd.png",
+      "liveStreamUrl": "https://example.invalid/live.m3u8",
+      "liveStreamThumbnail": "pkg:/images/live-thumb.png"
+    },
+    "fonts": {
+      "title": "font:BoldSystemFont",
+      "body": "font:MediumSystemFont",
+      "caption": "font:SmallSystemFont",
+      "heading": "font:ExtraBoldSystemFont"
+    },
+    "spacing": {
+      "marginHorizontal": 80,
+      "marginVertical": 40
+    },
+    "animation": {
+      "cardScale": 1.05,
+      "transitionDuration": 0.25
+    }
+  },
+  "content": {
+    "sourceUrl": "https://example.invalid/feed",
+    "userAgent": "Roku/14.1.0",
+    "maxRows": 20,
+    "maxItemsPerRow": 12,
+    "retryAttempts": 3,
+    "retryDelayMs": 2000,
+    "fetchTimeout": 30,
+    "sslCertificates": "common:/certs/ca-bundle.crt"
+  },
+  "features": {
+    "layoutPreference": "leftnav",
+    "search": true,
+    "deepLinking": true,
+    "analytics": false,
+    "crashReporting": true,
+    "overhangLogo": true,
+    "overhangClock": true,
+    "overhangOptions": true,
+    "liveService": true
+  },
+  "navItems": [
+    {
+      "id": "home",
+      "label": "Home",
+      "icon": "Home",
+      "page": "home",
+      "visible": true,
+      "order": 0
+    },
+    {
+      "id": "search",
+      "label": "Search",
+      "icon": "Search",
+      "page": "search",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "id": "settings",
+      "label": "Settings",
+      "icon": "Settings",
+      "page": "settings",
+      "visible": true,
+      "order": 2
+    }
+  ],
+  "pageRegistry": {
+    "home": {
+      "component": "GridScreen",
+      "title": "Home",
+      "requiresAuth": false
+    }
+  },
+  "ui": {
+    "backgroundColor": "0x1A1A2E",
+    "welcome": {
+      "enabled": true,
+      "title": "Loading...",
+      "subtitle": "Please wait"
+    },
+    "error": {
+      "title": "Connection Error",
+      "message": "Unable to load content. Please check your network connection and try again.",
+      "retryLabel": "Retry"
+    },
+    "loading": {
+      "message": "Loading..."
+    }
+  },
+  "analytics": {
+    "enabled": false,
+    "exportUrl": "https://example.invalid/api/analytics",
+    "exportIntervalSeconds": 300,
+    "maxEventsPerBatch": 50,
+    "flushOnError": true
+  },
+  "server": {
+    "baseUrl": "https://example.invalid",
+    "timeout": 15
+  },
+  "giving": {
+    "donationUrl": "https://example.invalid/giving"
+  },
+  "cardStyle": {
+    "showTitle": false,
+    "showDescription": false,
+    "titleFont": "font:SmallSystemFont",
+    "descriptionFont": "font:SmallSystemFont",
+    "titleColor": "0xFFFFFF",
+    "descriptionColor": "0xA0A0B0",
+    "titleNumLines": 2,
+    "descriptionNumLines": 1,
+    "showDetailTitle": false,
+    "showDetailDescription": false,
+    "detailTitleFont": "font:SmallBoldSystemFont",
+    "detailDescriptionFont": "font:SmallSystemFont",
+    "detailTitleColor": "0xFFFFFF",
+    "detailDescriptionColor": "0xA0A0B0",
+    "detailTitleNumLines": 1,
+    "detailDescriptionNumLines": 3
+  },
+  "heartbeat": {
+    "intervalSeconds": 60,
+    "exportUrl": "https://example.invalid/api/heartbeat"
+  }
+}

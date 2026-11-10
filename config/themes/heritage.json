@@ -1,0 +1,29 @@
+{
+  "theme": {
+    "name": "Heritage",
+    "description": "Warm burgundy and gold palette evoking tradition and warmth. Ideal for established ministries with a classic, dignified aesthetic.",
+    "designLenses": {
+      "norman3Levels": "Visceral appeal through rich, saturated burgundy tones that convey warmth and heritage",
+      "millersLaw": "Reduced color load — only 4 distinct hues (burgundy, gold, warm white, muted gray) keep cognitive load low"
+    }
+  },
+  "branding": {
+    "colors": {
+      "background": "0x2D1B2E",
+      "surface": "0x3D2440",
+      "accent": "0xC8963E",
+      "textPrimary": "0xF5F0EB",
+      "textSecondary": "0xB8A8A0",
+      "focus": "0xE8B931",
+      "error": "0xE85C4A"
+    },
+    "spacing": {
+      "marginHorizontal": 80,
+      "marginVertical": 40
+    },
+    "animation": {
+      "cardScale": 1.05,
+      "transitionDuration": 0.3
+    }
+  }
+}

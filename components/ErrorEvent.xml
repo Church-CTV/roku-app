@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="ErrorEvent" extends="Node">
+    <interface>
+        <field id="type" type="string" />
+        <field id="errorType" type="string" />
+        <field id="message" type="string" />
+        <field id="context" type="string" />
+        <field id="timestamp" type="string" />
+        <field id="appVersion" type="string" />
+    </interface>
+</component>

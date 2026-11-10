@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ContinueWatchingCard — Poster card with progress bar overlay -->
+<component name="ContinueWatchingCard" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="ContinueWatchingCard.brs" />
+
+    <interface>
+        <field id="itemContent" type="node" onChange="OnContentSet" />
+        <field id="focused" type="boolean" value="false" onChange="OnFocusChanged" />
+        <field id="select" type="boolean" value="false" alwaysNotify="true" />
+    </interface>
+
+    <children>
+        <!-- MaskGroup with 8px rounded corner mask for the poster and focus overlay. -->
+        <MaskGroup id="posterMask"
+            maskUri="pkg:/images/card_mask.png"
+            maskSize="[480,270]"
+            maskOffset="[0,0]"
+        >
+            <!-- Poster image -->
+            <Poster
+                id="poster"
+                loadDisplayMode="scaleToFit"
+                width="480"
+                height="270"
+                loadWidth="480"
+                loadHeight="270"
+            />
+
+            <!-- Focus ring — clipped to rounded corners by MaskGroup -->
+            <Rectangle id="focusRing"
+                width="480"
+                height="270"
+                color="0xFFFFFF"
+                opacity="0"
+                visible="false"
+            />
+        </MaskGroup>
+
+        <!-- Progress bar background -->
+        <Rectangle id="progressBg"
+            width="460" height="8"
+            color="0x333333"
+            opacity="0.9"
+            translation="[10, 252]"
+        />
+
+        <!-- Progress bar fill -->
+        <Rectangle id="progressFill"
+            width="0" height="8"
+            color="0xE8B931"
+            opacity="0.9"
+            translation="[10, 252]"
+        />
+
+        <!-- Progress text -->
+        <Label id="progressText"
+            width="460" height="20"
+            font="font:SmallSystemFont"
+            color="0xA0A0B0"
+            horizAlign="left"
+            translation="[10, 260]"
+            text=""
+        />
+    </children>
+</component>

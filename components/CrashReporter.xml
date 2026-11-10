@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="CrashReporter" extends="Node">
+    <interface>
+        <field id="lastCrashTime" type="string" />
+        <field id="lastCrashMessage" type="string" />
+        <field id="lastCrashStack" type="string" />
+        <field id="crashCount" type="integer" />
+        <field id="pendingCrashes" type="array" />
+        <field id="errorCount" type="integer" />
+    </interface>
+</component>

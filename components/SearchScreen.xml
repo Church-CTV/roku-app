@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="SearchScreen" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/Analytics.brs" />
+    <script type="text/brightscript" uri="../source/ConfigLoader.bs" />
+    <script type="text/brightscript" uri="SearchScreen.brs" />
+
+    <interface>
+        <field id="content" type="node" onChange="OnContentSet" />
+        <field id="searchText" type="string" onChange="OnSearchTextChanged" />
+        <function name="HandleSearchResults" />
+        <function name="FocusSearchField" type="boolean" />
+        <field id="leftNav" type="node" onChange="OnLeftNavSet" />
+        <field id="close" type="boolean" value="false" alwaysNotify="true" />
+        <field id="searchComplete" type="boolean" value="false" alwaysNotify="true" />
+        <field id="selectedContent" type="node" />
+        <field id="play" type="boolean" value="false" alwaysNotify="true" />
+        <field id="focusedChild" type="node" onChange="OnFocusedChildChanged" />
+    </interface>
+
+    <children>
+        <Label id="searchTitle" text="Search" font="font:ExtraBoldSystemFont"
+               color="0xE8B931" horizAlign="left" translation="[130, 80]" />
+
+   <MiniKeyboard id="SearchField" translation="[100, 270]" text=""
+                       keyColor="0xFFFFFFFF" focusedKeyColor="0x000000" focusable="true"/>
+
+        <Label id="resultsLabel" text="" font="font:SmallBoldSystemFont"
+               color="0xA0A0B0" horizAlign="left" translation="[750, 140]" />
+
+       <RowList id="SearchResults" itemComponentName="ContentCard"
+                       translation="[700, 200]"
+                       itemSize="[1020, 405]"
+                       rowitemSize="[[480,270]]"
+                       rowItemSpacing="[[30, 0]]"
+                      numRows="3"
+                      showRowLabel="[false]"
+                      rowFocusAnimationStyle="floatingfocus"
+                      focusXOffset="[50]"
+                      visible="false" />
+
+        <Group id="noResultsGroup" translation="[0, 0]" visible="false">
+            <Rectangle width="1920" height="1080" color="0x1A1A2E" opacity="0.65" />
+            <Label id="noResultsTitle" text="No Results Found" font="font:ExtraBoldSystemFont"
+                   color="0xFFFFFF" horizAlign="center" translation="[610, 500]" />
+            <Label id="noResultsMessage" text="Try searching with different keywords"
+                   font="font:MediumSystemFont" color="0xFFFFFF" horizAlign="center"
+                   translation="[610, 360]" wrap="true" width="600" />
+        </Group>
+
+        <Label id="searchLoading" text="Searching..." font="font:MediumBoldSystemFont"
+               color="0xE8B931" horizAlign="center" vertAlign="center"
+               visible="false" translation="[0, 0]" />
+
+        <Timer id="debounceTimer" duration="1.0" />
+        <Timer id="focusTracker" duration="0.2" />
+    </children>
+</component>

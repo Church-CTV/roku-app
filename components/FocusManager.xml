@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ FocusManager.xml - Central focus management system
+ Coordinates focus state across all components
+-->
+<component name="FocusManager" extends="Node">
+    <!-- Focus state tracking -->
+    <interface>
+    <field id="currentFocusArea" type="string" value="" notify="true"/>
+    <field id="previousFocusArea" type="string" value="" notify="true"/>
+    
+    <!-- Active panel state -->
+    <field id="activePanel" type="string" value="" notify="true"/>
+    <field id="panelFocusContext" type="string" value="" notify="true"/>
+    
+    <!-- Navigation context -->
+    <field id="navFocusIndex" type="integer" value="0" notify="true"/>
+    <field id="navFocusKey" type="string" value="" notify="true"/>
+    
+    <!-- Edge detection -->
+    <field id="isAtEdge" type="boolean" value="false" notify="true"/>
+    <field id="edgeType" type="string" value="" notify="true"/>
+    
+    <!-- Focus control -->
+    <field id="requestFocus" type="string" value=""/>
+    <field id="clearFocus" type="integer" value="0"/>
+    
+    <!-- Verification -->
+    <field id="verifyFocus" type="boolean" value="false"/>
+    <field id="focusVerified" type="boolean" value="false"/>
+    </interface>
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="FocusManager.brs" />
+</component>

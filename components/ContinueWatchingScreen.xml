@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ContinueWatchingScreen.xml - Continue watching screen -->
+<component name="ContinueWatchingScreen" extends="Group" initialState="main">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/Analytics.brs" />
+    <script type="text/brightscript" uri="../source/Preferences.brs" />
+    <script type="text/brightscript" uri="../source/ContinueWatching.brs" />
+    <script type="text/brightscript" uri="ContinueWatchingScreen.brs" />
+    <children>
+        <!-- Title -->
+        <Label id="title" text="Continue Watching" font="font:ExtraBoldSystemFont" color="0xFFFFFF"
+               width="1920" height="80" vertAlign="center" horizAlign="center"
+               translation="[0, 20]" />
+        
+        <!-- Continue watching list with custom cards showing progress bars -->
+        <RowList id="continueRowList" translation="[80, 120]" width="1760" height="900"
+                 focusable="true"
+                 itemComponentName="ContinueWatchingCard" />
+        
+        <!-- Empty state -->
+        <Group id="emptyState" translation="[0, 400]" visible="false">
+            <Label id="emptyTitle" text="No Videos to Continue" font="font:BoldSystemFont" color="0xA0A0B0"
+                   width="1920" height="60" vertAlign="center" horizAlign="center" />
+            <Label id="emptySubtitle" text="Start watching a sermon to see it here" font="font:MediumSystemFont" color="0xA0A0B0"
+                   width="1920" height="40" vertAlign="center" horizAlign="center"
+                   translation="[0, 80]" />
+        </Group>
+    </children>
+    <interface>
+        <field id="content" type="node" />
+        <field id="play" type="boolean" value="false" alwaysNotify="true" />
+        <field id="close" type="boolean" value="false" alwaysNotify="true" />
+        <field id="selectedContent" type="node" />
+        <function name="LoadContinueWatching" />
+    </interface>
+</component>

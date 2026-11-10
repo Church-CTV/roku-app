@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="MainScene" extends="Scene">
+    <interface>
+        <field id="deeplinkContentId" type="string" />
+        <field id="deeplinkMediaType" type="string" />
+        <field id="global" type="node" />
+        <field id="playContent" type="node" onChange="OnPlayContentRequested" />
+    </interface>
+    <script type="text/brightscript" uri="../source/ConfigLoader.bs" />
+    <script type="text/brightscript" uri="../source/Heartbeat.brs" />
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/Analytics.brs" />
+    <script type="text/brightscript" uri="../source/CrashReporter.brs" />
+    <script type="text/brightscript" uri="../source/ErrorHandling.brs" />
+    <script type="text/brightscript" uri="../source/Preferences.brs" />
+    <script type="text/brightscript" uri="../source/AnalyticsExport.brs" />
+    <script type="text/brightscript" uri="UILogic/ScreenStackLogic.brs" />
+    <script type="text/brightscript" uri="UILogic/ContentTaskLogic.brs" />
+    <script type="text/brightscript" uri="UILogic/GridScreenLogic.brs" />
+    <script type="text/brightscript" uri="UILogic/VideoPlayerLogic.brs" />
+    <script type="text/brightscript" uri="UILogic/RowListFocusHandler.brs" />
+    <script type="text/brightscript" uri="MainScene.brs" />
+    <children>
+    <!-- Brand theme for design tokens -->
+    <BrandTheme id="theme" />
+
+    <!-- Config manager for runtime configuration -->
+    <ConfigManager id="configManager" />
+
+    <!-- Loading indicator (spinner + text) - positioned for 1080p (1920x1080) -->
+    <Group id="loadingIndicator" visible="true">
+        <Poster id="loadingSpinner"
+            uri="pkg:/images/loader.png"
+            width="120"
+            height="120"
+            translation="[900, 480]"
+        />
+        <Label id="loadingText"
+            text="Loading ..."
+            font="font:MediumSystemFont"
+            color="0xFFFFFF"
+            horizAlign="center"
+            translation="[760, 620]"
+            width="400"
+        />
+    </Group>
+
+    <!-- Welcome screen (shown after content loads) -->
+    <Group id="welcomeScreen" visible="false">
+        <Label id="welcomeTitle"
+            text="Welcome"
+            font="font:ExtraBoldSystemFont"
+            color="0xFFFFFF"
+            horizAlign="center"
+            translation="[900, 350]"
+            width="600"
+        />
+        <Label id="welcomeSubtitle"
+            text="Select a sermon to play"
+            font="font:MediumSystemFont"
+            color="0xA0A0B0"
+            horizAlign="center"
+            translation="[900, 420]"
+            width="600"
+        />
+    </Group>
+
+    <!-- Error screen (shown when content fetch fails) -->
+    <Group id="errorScreen" visible="false">
+        <Label id="errorTitle"
+            text="Connection Error"
+            font="font:ExtraBoldSystemFont"
+            color="0xFF4444"
+            horizAlign="center"
+            translation="[900, 350]"
+            width="600"
+        />
+        <Label id="errorMessage"
+            text="Unable to load content. Please check your network connection."
+            font="font:MediumSystemFont"
+            color="0xFFFFFF"
+            horizAlign="center"
+            wrap="true"
+            numLines="3"
+            translation="[515, 420]"
+            width="1000"
+
+        />
+        <Button id="retryButton"
+            text="Retry"
+            focusBitmapUri="pkg:/images/icon_focus_hd.png"
+            translation="[900, 580]"
+            minWidth="200"
+            height="60"
+            textColor="0x1A1A2E"
+        />
+    </Group>
+
+    <!-- Overhang display (Roku built-in component) -->
+    <Overhang id="overhang"/>
+    
+    <!-- Focus Manager - central focus state coordination -->
+    <FocusManager id="focusManager" />
+    
+    <!-- Focus Verifier - verifies focus operations -->
+    <FocusVerifier id="focusVerifier" />
+    
+    <VideoScreen id="videoScreen" visible="false" />
+    
+    <!-- State Exporter for E2E testing — writes app state to device registry -->
+    <StateExporterTask id="stateExporter" />
+    </children>
+</component>

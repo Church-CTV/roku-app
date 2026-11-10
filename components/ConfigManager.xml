@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ConfigManager — Runtime configuration access component -->
+<!-- Provides observed config fields that other components can bind to -->
+<component name="ConfigManager" extends="Group">
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="../source/ConfigLoader.bs" />
+    <script type="text/brightscript" uri="ConfigManager.brs" />
+
+    <interface>
+        <!-- Config state fields -->
+        <field id="channelName" type="string" onChange="OnConfigChanged" />
+        <field id="channelVersion" type="string" onChange="OnConfigChanged" />
+        <field id="channelLanguage" type="string" onChange="OnConfigChanged" />
+
+        <!-- Branding fields -->
+        <field id="bgColor" type="color" onChange="OnConfigChanged" />
+        <field id="surfaceColor" type="color" onChange="OnConfigChanged" />
+        <field id="accentColor" type="color" onChange="OnConfigChanged" />
+        <field id="textPrimary" type="color" onChange="OnConfigChanged" />
+        <field id="textSecondary" type="color" onChange="OnConfigChanged" />
+        <field id="focusColor" type="color" onChange="OnConfigChanged" />
+        <field id="errorColor" type="color" onChange="OnConfigChanged" />
+
+        <!-- Image fields -->
+        <field id="overhangLogoUri" type="uri" onChange="OnConfigChanged" />
+        <field id="backgroundImageUri" type="uri" onChange="OnConfigChanged" />
+        <field id="iconFocusUri" type="uri" onChange="OnConfigChanged" />
+
+        <!-- Feature toggles -->
+        <field id="featureSearch" type="boolean" onChange="OnConfigChanged" />
+        <field id="featureDeepLinking" type="boolean" onChange="OnConfigChanged" />
+        <field id="featureAnalytics" type="boolean" onChange="OnConfigChanged" />
+        <field id="featureCrashReporting" type="boolean" onChange="OnConfigChanged" />
+        <field id="featureOverhangLogo" type="boolean" onChange="OnConfigChanged" />
+        <field id="featureOverhangClock" type="boolean" onChange="OnConfigChanged" />
+        <field id="featureOverhangOptions" type="boolean" onChange="OnConfigChanged" />
+
+        <!-- Content source -->
+        <field id="contentSourceUrl" type="string" onChange="OnConfigChanged" />
+        <field id="contentUserAgent" type="string" onChange="OnConfigChanged" />
+        <field id="contentMaxRows" type="integer" onChange="OnConfigChanged" />
+        <field id="contentMaxItemsPerRow" type="integer" onChange="OnConfigChanged" />
+        <field id="contentRetryAttempts" type="integer" onChange="OnConfigChanged" />
+        <field id="contentRetryDelayMs" type="integer" onChange="OnConfigChanged" />
+
+        <!-- UI fields -->
+        <field id="uiBackgroundColor" type="color" onChange="OnConfigChanged" />
+        <field id="uiWelcomeTitle" type="string" onChange="OnConfigChanged" />
+        <field id="uiWelcomeSubtitle" type="string" onChange="OnConfigChanged" />
+        <field id="uiErrorTitle" type="string" onChange="OnConfigChanged" />
+        <field id="uiErrorMessage" type="string" onChange="OnConfigChanged" />
+        <field id="uiRetryLabel" type="string" onChange="OnConfigChanged" />
+        <field id="uiLoadingMessage" type="string" onChange="OnConfigChanged" />
+
+        <!-- Analytics -->
+        <field id="analyticsExportUrl" type="string" onChange="OnConfigChanged" />
+        <field id="analyticsExportIntervalSeconds" type="integer" onChange="OnConfigChanged" />
+
+        <!-- Layout preference -->
+        <field id="layoutPreference" type="string" onChange="OnConfigChanged" />
+
+        <!-- Card display style (thumbnail overlay) -->
+        <field id="cardShowTitle" type="boolean" onChange="OnCardStyleChanged" />
+        <field id="cardShowDescription" type="boolean" onChange="OnCardStyleChanged" />
+        <field id="cardTitleFont" type="string" onChange="OnCardStyleChanged" />
+        <field id="cardDescriptionFont" type="string" onChange="OnCardStyleChanged" />
+        <field id="cardTitleColor" type="color" onChange="OnCardStyleChanged" />
+        <field id="cardDescriptionColor" type="color" onChange="OnCardStyleChanged" />
+        <field id="cardTitleNumLines" type="integer" onChange="OnCardStyleChanged" />
+        <field id="cardDescriptionNumLines" type="integer" onChange="OnCardStyleChanged" />
+
+        <!-- Detail panel style (GridScreen focused-item labels) -->
+        <field id="detailShowTitle" type="boolean" onChange="OnCardStyleChanged" />
+        <field id="detailShowDescription" type="boolean" onChange="OnCardStyleChanged" />
+        <field id="detailTitleFont" type="string" onChange="OnCardStyleChanged" />
+        <field id="detailDescriptionFont" type="string" onChange="OnCardStyleChanged" />
+        <field id="detailTitleColor" type="color" onChange="OnCardStyleChanged" />
+        <field id="detailDescriptionColor" type="color" onChange="OnCardStyleChanged" />
+        <field id="detailTitleNumLines" type="integer" onChange="OnCardStyleChanged" />
+        <field id="detailDescriptionNumLines" type="integer" onChange="OnCardStyleChanged" />
+
+        <!-- Giving / donation -->
+        <field id="givingDonationUrl" type="string" onChange="OnConfigChanged" />
+
+        <!-- Service schedule -->
+        <field id="liveStreamUrl" type="string" onChange="OnConfigChanged" />
+        <field id="liveStreamThumbnail" type="string" onChange="OnConfigChanged" />
+
+        <!-- Raw config (for programmatic access) -->
+        <field id="config" type="string" />
+
+        <!-- Events -->
+        <field id="configLoaded" type="boolean" />
+        <field id="configError" type="string" />
+
+        <!-- Callable functions -->
+        <function name="LoadAndApplyConfig" />
+        <function name="GetLayoutPreference" />
+        <function name="SetLayoutPreference" />
+        <function name="GetConfig" />
+        <function name="ApplyRemoteCardStyle" />
+        <function name="ApplyRemoteGivingConfig" />
+    </interface>
+
+    <children>
+    </children>
+</component>

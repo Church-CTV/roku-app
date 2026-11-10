@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ FocusVerifier.xml - Verifies focus operations succeeded
+-->
+<component name="FocusVerifier" extends="Node">
+    <!-- Focus verification state -->
+    <interface>
+    <field id="verifyingFocus" type="boolean" value="false" notify="true"/>
+    <field id="focusVerified" type="boolean" value="false" notify="true"/>
+    <field id="attempts" type="integer" value="0" notify="true"/>
+    <field id="maxAttempts" type="integer" value="3"/>
+    
+    <!-- Focus target -->
+    <field id="targetFocusNode" type="node"/>
+    <field id="targetFocusArea" type="string" value=""/>
+    
+    <!-- Verification control -->
+    <field id="requestVerification" type="boolean" value="false"/>
+    <field id="stopVerification" type="integer" value="0"/>
+    
+    <!-- Callable functions -->
+    <function name="RequestFocusWithVerification" />
+    <function name="GetCurrentFocus" />
+    </interface>
+    <script type="text/brightscript" uri="../source/App.brs" />
+    <script type="text/brightscript" uri="FocusVerifier.brs" />
+</component>

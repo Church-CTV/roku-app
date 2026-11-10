@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- ExitButton - Custom component for exit dialog button with reliable OK handling -->
+<component name="ExitButton" extends="Group">
+    <interface>
+        <field id="exitRequested" type="boolean" value="false" alwaysNotify="true"/>
+    </interface>
+    <script type="text/brightscript" uri="../../source/App.brs" />
+    <script type="text/brightscript" uri="ExitButton.brs" />
+    <children>
+        <Rectangle
+            id="buttonBg"
+            width="200"
+            height="60"
+            color="0xFFFFFF"
+        />
+        <Rectangle
+            id="focusBorder"
+            width="208"
+            height="68"
+            color="0xE8B931"
+            translation="[-4, -4]"
+            opacity="0"
+            visible="false"
+        />
+    </children>
+</component>

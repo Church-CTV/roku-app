@@ -1,0 +1,407 @@
+' ConfigLoader.bs - Configuration loading, validation, and runtime access
+' Provides a centralized config system for the Roku App Template Service
+' Businesses customize config/default.json without modifying core code
+
+' Load configuration from JSON file
+' Returns roAssociativeArray or invalid on failure
+function LoadConfig (configPath) as object
+    if configPath = invalid or configPath = ""
+        configPath = "pkg:/config/default.json"
+    end if
+
+    rsp = ReadAsciiFile(configPath)
+    if rsp = invalid or rsp = ""
+        LogError("ConfigLoader", "Failed to read config file: " + configPath)
+        return LoadDefaultConfig()
+    end if
+
+    config = invalid
+    try
+        config = ParseJson(rsp)
+    catch e
+        LogError("ConfigLoader", "ParseJson failed: " + e.message)
+        config = invalid
+    end try
+    if config = invalid or Type(config) <> "roAssociativeArray"
+        LogError("ConfigLoader", "Failed to parse config JSON: " + configPath)
+        return LoadDefaultConfig()
+    end if
+
+    ' Validate the loaded config
+    validationErrors = ValidateConfig(config)
+    if validationErrors.Count() > 0
+        LogError("ConfigLoader", "Config validation errors:")
+        for each err in validationErrors
+            LogError("ConfigLoader", "  - " + err)
+        end for
+        ' Merge with defaults to ensure all fields exist
+        defaults = LoadDefaultConfig()
+        config = MergeConfig(defaults, config)
+    end if
+
+    LogInfo("ConfigLoader", "Configuration loaded successfully: " + configPath)
+    return config
+end function
+
+' Load embedded default configuration (fallback)
+function LoadDefaultConfig () as object
+    LogInfo("ConfigLoader", "Loading embedded default configuration")
+    defaults = {
+        version: "1.0.0"
+        channel: {
+            name: "Roku Channel"
+            description: "Roku App Template Service"
+            language: "en"
+            copyright: ""
+        }
+        branding: {
+            colors: {
+                background: "0x1A1A2E"
+                surface: "0x16213E"
+                accent: "0xE8B931"
+                textPrimary: "0xFFFFFF"
+                textSecondary: "0xA0A0B0"
+                focus: "0xE8B931"
+                navFocusBg: "0xE8B931"
+                error: "0xFF4444"
+            }
+            images: {
+                overhangLogo: "pkg:/images/hd_overhang_logo.png"
+                backgroundImage: "pkg:/images/background.png"
+                iconFocus: "pkg:/images/icon_focus_hd.png"
+                liveStreamThumbnail: "pkg:/images/live-thumb.png"
+                liveStreamUrl: ""
+            }
+            fonts: {
+                title: "font:BoldSystemFont"
+                body: "font:MediumSystemFont"
+                caption: "font:SmallSystemFont"
+                heading: "font:ExtraBoldSystemFont"
+            }
+            spacing: {
+                marginHorizontal: 80
+                marginVertical: 40
+            }
+            animation: {
+                cardScale: 1.05
+                transitionDuration: 0.25
+            }
+        }
+        content: {
+            sourceUrl: ""
+            userAgent: "Roku/Template"
+            maxRows: 6
+            maxItemsPerRow: 12
+            retryAttempts: 3
+            retryDelayMs: 2000
+            fetchTimeout: 30
+            sslCertificates: "common:/certs/ca-bundle.crt"
+        }
+        features: {
+            search: true
+            deepLinking: true
+            analytics: true
+            crashReporting: true
+            layoutPreference: "leftnav"
+            overhangLogo: true
+            overhangClock: true
+            overhangOptions: true
+        }
+        ui: {
+            backgroundColor: "0x1A1A2E"
+            welcome: {
+                enabled: true
+                title: "Loading..."
+                subtitle: "Please wait"
+            }
+            error: {
+                title: "Connection Error"
+                message: "Unable to load content. Please check your network connection."
+                retryLabel: "Retry"
+            }
+            loading: {
+                message: "Loading..."
+            }
+        }
+        analytics: {
+            enabled: true
+            exportUrl: ""
+            exportIntervalSeconds: 300
+            maxEventsPerBatch: 50
+            flushOnError: true
+        }
+        server: {
+            baseUrl: ""
+            timeout: 15
+        }
+        cardStyle: GetDefaultCardStyle()
+    }
+    return defaults
+end function
+
+' Get default card style configuration
+function GetDefaultCardStyle () as object
+    return {
+        showTitle: true
+        showDescription: true
+        titleFont: "font:SmallBoldSystemFont"
+        descriptionFont: "font:SmallSystemFont"
+        titleColor: "0xFFFFFF"
+        descriptionColor: "0xA0A0B0"
+        titleNumLines: 1
+        descriptionNumLines: 1
+        showDetailTitle: true
+        showDetailDescription: true
+        detailTitleFont: "font:SmallBoldSystemFont"
+        detailDescriptionFont: "font:SmallSystemFont"
+        detailTitleColor: "0xFFFFFF"
+        detailDescriptionColor: "0xA0A0B0"
+        detailTitleNumLines: 1
+        detailDescriptionNumLines: 3
+    }
+end function
+
+' Validate configuration against required fields and value constraints
+' Returns array of error strings (empty if valid)
+function ValidateConfig (config) as object
+    try
+        errors = []
+
+        if config = invalid or Type(config) <> "roAssociativeArray"
+            errors.Push("Config must be a valid associative array")
+            return errors
+        end if
+
+        ' Check required top-level fields (must match schema.json "required")
+        requiredFields = ["channel", "content"]
+        for each field in requiredFields
+            if not config.DoesExist(field)
+                errors.Push("Missing required field: " + field)
+            end if
+        end for
+
+        ' Validate channel.name is required
+        if config.DoesExist("channel") and Type(config.channel) = "roAssociativeArray"
+            if not config.channel.DoesExist("name") or config.channel.name = ""
+                errors.Push("channel.name is required and cannot be empty")
+            end if
+        else
+            errors.Push("channel object is required")
+        end if
+
+        ' Validate branding.colors if present
+        if config.DoesExist("branding") and Type(config.branding) = "roAssociativeArray"
+            if config.branding.DoesExist("colors")
+                colorFields = ["background", "surface", "accent", "textPrimary", "textSecondary", "focus", "error"]
+                for each colorField in colorFields
+                    if config.branding.colors.DoesExist(colorField)
+                        colorVal = config.branding.colors[colorField]
+                        if GetInterface(colorVal, "ifString") = invalid or Len(colorVal) < 8 or Left(colorVal, 2) <> "0x"
+                            errors.Push("branding.colors." + colorField + " must be a valid hex color (e.g., 0xFF0000)")
+                        end if
+                    end if
+                end for
+            end if
+        end if
+
+        ' Validate content.sourceUrl is required if present
+        if config.DoesExist("content") and Type(config.content) = "roAssociativeArray"
+            if config.content.DoesExist("sourceUrl") and config.content.sourceUrl = ""
+                errors.Push("content.sourceUrl cannot be empty")
+            end if
+            if config.content.DoesExist("maxRows")
+                if GetInterface(config.content.maxRows, "ifInt") = invalid or config.content.maxRows < 1 or config.content.maxRows > 20
+                    errors.Push("content.maxRows must be an integer between 1 and 20")
+                end if
+            end if
+            if config.content.DoesExist("maxItemsPerRow")
+                if GetInterface(config.content.maxItemsPerRow, "ifInt") = invalid or config.content.maxItemsPerRow < 1 or config.content.maxItemsPerRow > 50
+                    errors.Push("content.maxItemsPerRow must be an integer between 1 and 50")
+                end if
+            end if
+        end if
+
+        ' Validate features are booleans if present
+        if config.DoesExist("features") and Type(config.features) = "roAssociativeArray"
+            featureFields = ["search", "deepLinking", "analytics", "crashReporting", "overhangLogo", "overhangClock", "overhangOptions"]
+            for each featureField in featureFields
+                if config.features.DoesExist(featureField)
+                    if GetInterface(config.features[featureField], "ifBoolean") = invalid
+                        errors.Push("features." + featureField + " must be a boolean")
+                    end if
+                end if
+            end for
+        end if
+
+        ' Validate cardStyle fields if present
+        if config.DoesExist("cardStyle") and Type(config.cardStyle) = "roAssociativeArray"
+            cardStyle = config.cardStyle
+            boolCardFields = ["showTitle", "showDescription", "showDetailTitle", "showDetailDescription"]
+            for each field in boolCardFields
+                if cardStyle.DoesExist(field)
+                    if GetInterface(cardStyle[field], "ifBoolean") = invalid
+                        errors.Push("cardStyle." + field + " must be a boolean")
+                    end if
+                end if
+            end for
+            intCardFields = ["titleNumLines", "descriptionNumLines", "detailTitleNumLines", "detailDescriptionNumLines"]
+            for each field in intCardFields
+                if cardStyle.DoesExist(field)
+                    val = cardStyle[field]
+                    if GetInterface(val, "ifInt") = invalid or val < 1 or val > 10
+                        errors.Push("cardStyle." + field + " must be an integer between 1 and 10")
+                    end if
+                end if
+            end for
+        end if
+
+        return errors
+    catch e
+        LogError("ConfigLoader", "ValidateConfig: " + e.message)
+        return ["Config validation crashed: " + e.message]
+    end try
+end function
+
+' Deep merge two configurations - overrides takes priority
+' Used to merge user config with defaults
+function MergeConfig (defaults, overrides) as object
+    try
+        result = CloneObject(defaults)
+        if overrides = invalid or Type(overrides) <> "roAssociativeArray"
+            return result
+        end if
+
+        for each key in overrides
+            overrideVal = overrides[key]
+            if overrideVal = invalid
+
+            end if
+            if result.DoesExist(key)
+                defaultVal = result[key]
+                if Type(defaultVal) = "roAssociativeArray" and Type(overrideVal) = "roAssociativeArray"
+                    ' Deep merge nested objects
+                    result[key] = MergeConfig(defaultVal, overrideVal)
+                else
+                    ' Override value wins
+                    result[key] = overrideVal
+                end if
+            else
+                ' New field - add it
+                result[key] = overrideVal
+            end if
+        end for
+
+        return result
+    catch e
+        LogError("ConfigLoader", "MergeConfig: " + e.message)
+        return CloneObject(defaults)
+    end try
+end function
+
+' Clone an object (roAssociativeArray or roArray) recursively
+function CloneObject (obj) as dynamic
+    try
+        if obj = invalid
+            return invalid
+        end if
+
+        objType = Type(obj)
+        if objType = "roAssociativeArray"
+            result = CreateObject("roAssociativeArray")
+            for each key in obj
+                result[key] = CloneObject(obj[key])
+            end for
+            return result
+        else if objType = "roArray"
+            result = []
+            for each item in obj
+                result.Push(CloneObject(item))
+            end for
+            return result
+        else
+            ' Primitives - return as-is
+            return obj
+        end if
+    catch e
+        LogError("ConfigLoader", "CloneObject: " + e.message)
+        return invalid
+    end try
+end function
+
+' Get a nested config value by dot-notation path
+' Example: GetConfigValue(config, "branding.colors.accent")
+function GetConfigValue (config, path) as dynamic
+    if config = invalid or path = invalid or path = ""
+        return invalid
+    end if
+
+    parts = SplitString(path, ".")
+    current = config
+    for each part in parts
+        if Type(current) <> "roAssociativeArray" or not current.DoesExist(part)
+            return invalid
+        end if
+        current = current[part]
+    end for
+    return current
+end function
+
+' Set a nested config value by dot-notation path
+' Example: SetConfigValue(config, "features.search", false)
+sub SetConfigValue(config, path, value)
+    if config = invalid or path = invalid or path = ""
+        return
+    end if
+
+    parts = SplitString(path, ".")
+    current = config
+    for i = 0 to parts.Count() - 2
+        part = parts[i]
+        if Type(current) <> "roAssociativeArray" or not current.DoesExist(part)
+            current[part] = CreateObject("roAssociativeArray")
+        end if
+        current = current[part]
+    end for
+
+    lastPart = parts[parts.Count() - 1]
+    current[lastPart] = value
+end sub
+
+' Check if a feature is enabled
+function IsFeatureEnabled (config, featureName) as boolean
+    if config = invalid or featureName = invalid or featureName = ""
+        return false
+    end if
+
+    if not config.DoesExist("features") or Type(config.features) <> "roAssociativeArray"
+        return false
+    end if
+
+    if not config.features.DoesExist(featureName)
+        return false
+    end if
+
+    return config.features[featureName] = true
+end function
+
+' Get all enabled features as an array of strings
+function GetEnabledFeatures (config) as object
+    features = []
+    if config = invalid or not config.DoesExist("features")
+        return features
+    end if
+
+    featureNames = ["search", "deepLinking", "analytics", "crashReporting", "overhangLogo", "overhangClock", "overhangOptions"]
+    for each name in featureNames
+        if IsFeatureEnabled(config, name)
+            features.Push(name)
+        end if
+    end for
+
+    return features
+end function
+
+' Log with config context
+sub LogConfig(context, message)
+    SafeLog("INFO", "Config:" + context, message)
+end sub

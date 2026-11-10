@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="AnalyticsEvent" extends="Node">
+    <interface>
+        <field id="eventType" type="string" />
+        <field id="screenName" type="string" />
+        <field id="previousScreen" type="string" />
+        <field id="contentId" type="string" />
+        <field id="contentTitle" type="string" />
+        <field id="contentDuration" type="integer" />
+        <field id="sourceScreen" type="string" />
+        <field id="action" type="string" />
+        <field id="target" type="string" />
+        <field id="details" type="string" />
+        <field id="errorType" type="string" />
+        <field id="errorMessage" type="string" />
+        <field id="context" type="string" />
+        <field id="mediaType" type="string" />
+        <field id="state" type="string" />
+        <field id="timestamp" type="string" />
+        <field id="sessionDuration" type="integer" />
+        <field id="appVersion" type="string" />
+    </interface>
+</component>

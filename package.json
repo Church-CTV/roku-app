@@ -1,0 +1,30 @@
+{
+  "name": "roku-channel-template",
+  "version": "1.0.0",
+  "description": "A reusable Roku SceneGraph channel template",
+  "main": "build.mjs",
+  "scripts": {
+    "build": "node build.mjs",
+    "lint": "brslint",
+    "validate": "node scripts/validate-package.mjs",
+    "test": "node --test tests/public-export.test.mjs && node tests/runner.mjs unit components accessibility crash-recovery",
+    "test:safety": "node --test tests/public-export.test.mjs"
+  },
+  "devDependencies": {
+    "brighterscript": "^0.73.4",
+    "brslint": "^0.2.3"
+  },
+  "keywords": [
+    "roku",
+    "template",
+    "channel",
+    "scene-graph"
+  ],
+  "license": "ISC",
+  "overrides": {
+    "xml2js": "^0.6.2"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1"
+  }
+}
