@@ -20,11 +20,12 @@
     "channel",
     "scene-graph"
   ],
-  "license": "ISC",
+  "license": "SEE LICENSE IN LICENSE",
   "overrides": {
     "xml2js": "^0.6.2"
   },
   "dependencies": {
     "adm-zip": "^0.6.1"
-  }
+  },
+  "private": true
 }
